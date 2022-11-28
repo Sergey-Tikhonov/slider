@@ -145,14 +145,12 @@
     margin-top: 42px;
     width: 679px;
     height: 482px;
-    display: inline-block;
     overflow: hidden;
     background-color: rgba(0, 255, 255, 0.347);
 }
 
 .img img {
-    display: block;
-    transition: 0.5s all;
+    transition: 1s all;
 }
 
 .img img:hover {
