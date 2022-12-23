@@ -15,7 +15,7 @@
         <section class="section">
             <div class="container">
                 <div class="left">
-                    <h1 class="title">Completed <br>projects <img class="line" src="./img/line h1.svg" alt="line"></h1>
+                    <h1 class="title">Completed <br>projects <img class="line" src="./img/line-h1.svg" alt="line"></h1>
                     <p class="text">
                         Only a small part of the work performed by our company is presented <br> on the site. For 14 years on in the construction <br> 
                         market we have made happy more than 1000 families
@@ -28,8 +28,18 @@
                                         City:
                                     </dt>
                                     <dd class="desc-text">
-                                        Rostov-on-Don<br>
+                                        <div class="desc__item"> 
+                                            Rostov-on-Don<br>
                                         LCD admiral
+                                        </div>
+                                        <div class="desc__item-2"> 
+                                            Sochi<br>
+                                            Thieves
+                                        </div>
+                                        <div class="desc__item-3"> 
+                                            Rostov-on-Don<br>
+                                            Patriotic
+                                        </div>
                                     </dd>
                                 </dl>
                             </div>
@@ -38,8 +48,10 @@
                                     <dt class="desc-name">
                                         Repair time:
                                     </dt>
-                                    <dd class="desc-text">
-                                        3.5 months
+                                    <dd class="desc-text-2">
+                                        <div class="desc__item">3.5 months</div>
+                                        <div class="desc__item-2">4 months</div>
+                                        <div class="desc__item-3">3 months</div>
                                     </dd>
                                 </dl>
                             </div>
@@ -50,8 +62,10 @@
                                     <dt class="desc-name">
                                         apartment area:
                                     </dt>
-                                    <dd class="desc-text">
-                                        81 m2
+                                    <dd class="desc-text-3">
+                                        <div class="desc__item">81 m2</div>
+                                        <div class="desc__item-2">105 m2</div>
+                                        <div class="desc__item-3">93 m2</div>
                                     </dd>
                                 </dl>
                             </div>
@@ -68,27 +82,29 @@
                         </div>
                     </div>
                     <div class="controls">
-                        <div class="left-arrow prev">
+                        <div class="left-arrow prev" onclick="moveSliderPrev();">
                             <img id="btnPrev" src="./img/left-arrow.svg" alt="left arrow">
                         </div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="right-arrow next">
+                        <div class="dots-area">
+                            <div class="dot" onclick="slideF();"></div>
+                            <div class="dot" onclick="slideS();"></div>
+                            <div class="dot" onclick="slideT();"></div>
+                        </div>
+                        <div class="right-arrow next" onclick="moveSliderNext();">
                             <img id="btnNext" src="./img/right-arrow.svg" alt="right arrow">
                         </div>
                     </div>
                 </div>
                 <div class="right">
                     <div class="links">
-                        <a class="link" href="#">Rostov-on-Don, Admiral</a>
-                        <a class="link" href="#">Sochi Thieves</a>
-                        <a class="link" href="#">Rostov-on-Don Patriotic</a>
+                        <a class="link" onclick="slideF();" href="#">Rostov-on-Don, Admiral</a>
+                        <a class="link" onclick="slideS();" href="#">Sochi Thieves</a>
+                        <a class="link" onclick="slideT();" href="#">Rostov-on-Don Patriotic</a>
                     </div>
                     <div class="img" id="img">
-                        <img src="./img/image-1.png" alt="interior-1">
-                        <img src="./img/image-2.png" alt="interior-2">
-                        <img src="./img/image-3.png" alt="interior-3">
+                        <img class="img__item" onclick="slideS();" src="./img/image-1.png" alt="interior-1">
+                        <img class="img__item" onclick="slideT();" src="./img/image-2.png" alt="interior-2">
+                        <img class="img__item" onclick="slideF();" src="./img/image-3.png" alt="interior-3">
                     </div>
                 </div>
             </div>

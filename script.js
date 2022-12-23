@@ -1,87 +1,131 @@
+//Ищем HTML коллекцию и преобразуем в массив
 const slider = document.querySelector('#img')
 const sliderItems = Array.from(slider.children)
-const btnNext = document.querySelector('#btnNext')
-const btnPrev = document.querySelector('#btnPrev')
 
-//Клик по картинке
+const dots = document.querySelector('.dots-area')
+const dotsItems = Array.from(dots.children)
 
-sliderItems.forEach(function (slide, index) {
-      
-    if (index !==0) {
-        slide.classList.add('hidden')
-    }
+const links = document.querySelector('.links')
+const linksItem = Array.from(links.children)
 
-    slide.dataset.index = index
+const desc = document.querySelector('.desc-text')
+const descItems = Array.from(desc.children)
 
-    sliderItems[0].setAttribute('data-active', '')
+const desc2 = document.querySelector('.desc-text-2')
+const desc2Items = Array.from(desc2.children)
 
-    slide.addEventListener('click', function () {
+const desc3 = document.querySelector('.desc-text-3')
+const desc3Items = Array.from(desc3.children)
 
-        slide.classList.add('hidden')
-        slide.removeAttribute('data-active')
+// Пишем функции с набором параметров для каждого слайда
 
-        let nextSlideIndex
-
-        if (index + 1 === sliderItems.length) {
-            nextSlideIndex = 0
-        } else {
-            nextSlideIndex = index + 1
-        }
-
-        const nextSlide = slider.querySelector(`[data-index="${nextSlideIndex}"]`)
+let slideF = function() {
+    if (sliderItems[0]) {        
+        dotsItems[0].classList.add('active-dot')
+        sliderItems[0].classList.remove('img__item')
+        sliderItems[0].classList.add('active')
+        dotsItems[2].classList.remove('active-dot')
+        sliderItems[2].classList.add('img__item')
+        sliderItems[2].classList.remove('active')
+        dotsItems[1].classList.remove('active-dot')
+        sliderItems[1].classList.add('img__item')
+        sliderItems[1].classList.remove('active')
+        linksItem[0].classList.add('active-link')
+        linksItem[1].classList.remove('active-link')
+        linksItem[2].classList.remove('active-link')
+        descItems[0].classList.add('active')
+        desc2Items[0].classList.add('active')
+        desc3Items[0].classList.add('active')
+        descItems[1].classList.remove('active')
+        desc2Items[1].classList.remove('active')
+        desc3Items[1].classList.remove('active')
+        descItems[2].classList.remove('active')
+        desc2Items[2].classList.remove('active')
+        desc3Items[2].classList.remove('active')
         
-        nextSlide.classList.remove('hidden')
-        nextSlide.setAttribute('data-active', '')
+    }
+}
+slideF()
 
-    })
-})
-
-//Клик по кнопке вперед
-
-btnNext.onclick = function () {
-
-    const currentSlide = slider.querySelector('[data-active]')
-    const currentSlideIndex = +currentSlide.dataset.index
-
-    currentSlide.classList.add('hidden')
-    currentSlide.removeAttribute('data-active')
-
-    let nextSlideIndex
-
-        if (currentSlideIndex + 1 === sliderItems.length) {
-            nextSlideIndex = 0
-        } else {
-            nextSlideIndex = currentSlideIndex + 1
-        }
-    
-    const nextSlide = slider.querySelector(`[data-index="${nextSlideIndex}"]`)
-    
-    nextSlide.classList.remove('hidden')
-    nextSlide.setAttribute('data-active', '')
-
+let slideS = function() {
+    if (sliderItems[1]) {        
+        dotsItems[1].classList.add('active-dot')
+        sliderItems[1].classList.remove('img__item')
+        sliderItems[1].classList.add('active')
+        dotsItems[0].classList.remove('active-dot')
+        sliderItems[0].classList.add('img__item')
+        sliderItems[0].classList.remove('active')
+        dotsItems[2].classList.remove('active-dot')
+        sliderItems[2].classList.add('img__item')
+        sliderItems[2].classList.remove('active')
+        linksItem[0].classList.remove('active-link')
+        linksItem[1].classList.add('active-link')
+        linksItem[2].classList.remove('active-link')
+        descItems[0].classList.remove('active')
+        desc2Items[0].classList.remove('active')
+        desc3Items[0].classList.remove('active')
+        descItems[1].classList.add('active')
+        desc2Items[1].classList.add('active')
+        desc3Items[1].classList.add('active')
+        descItems[2].classList.remove('active')
+        desc2Items[2].classList.remove('active')
+        desc3Items[2].classList.remove('active')
+    }
 }
 
-//Клик по кнопке назад
 
-btnPrev.onclick = function () {
+let slideT = function() {
+    if (sliderItems[2]) {        
+        dotsItems[2].classList.add('active-dot')
+        sliderItems[2].classList.remove('img__item')
+        sliderItems[2].classList.add('active')
+        dotsItems[1].classList.remove('active-dot')
+        sliderItems[1].classList.add('img__item')
+        sliderItems[1].classList.remove('active')
+        dotsItems[0].classList.remove('active-dot')
+        sliderItems[0].classList.add('img__item')
+        sliderItems[0].classList.remove('active')
+        linksItem[0].classList.remove('active-link')
+        linksItem[1].classList.remove('active-link')
+        linksItem[2].classList.add('active-link')
+        descItems[0].classList.remove('active')
+        desc2Items[0].classList.remove('active')
+        desc3Items[0].classList.remove('active')
+        descItems[1].classList.remove('active')
+        desc2Items[1].classList.remove('active')
+        desc3Items[1].classList.remove('active')
+        descItems[2].classList.add('active')
+        desc2Items[2].classList.add('active')
+        desc3Items[2].classList.add('active')
+    }
+}    
 
-    const currentSlide = slider.querySelector('[data-active]')
-    const currentSlideIndex = +currentSlide.dataset.index
+// Пишем функции для стрелок
 
-    currentSlide.classList.add('hidden')
-    currentSlide.removeAttribute('data-active')
+let flag = 1
 
-    let nextSlideIndex
+let moveSliderNext = function() {
+    if (flag == 1) {
+        slideF()
+        flag = 2
+    } else if (flag == 2) {
+        slideS()
+        flag = 3
+    } else if (flag == 3) {
+        slideT()
+        flag = 1
+    }
+}
 
-        if (currentSlideIndex === 0 ) {
-            nextSlideIndex = sliderItems.length - 1
-        } else {
-            nextSlideIndex = currentSlideIndex - 1
-        }
-    
-    const nextSlide = slider.querySelector(`[data-index="${nextSlideIndex}"]`)
-    
-    nextSlide.classList.remove('hidden')
-    nextSlide.setAttribute('data-active', '')
-
+let moveSliderPrev = function() {
+    if (flag == 1) {
+        slideF()
+        flag = 3
+    } else if (flag == 3) {
+        slideT()
+        flag = 2
+    } else if (flag == 2) {
+        slideS()
+        flag = 1
+    }
 }
