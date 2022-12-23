@@ -129,3 +129,12 @@ let moveSliderPrev = function() {
         flag = 1
     }
 }
+
+let autoPlay = function() {
+    setTimeout(slideS, 3000)
+    setTimeout(slideT, 6000)
+    setTimeout(slideF, 9000)
+    let repeat = setTimeout(autoPlay, 9000)
+}  
+
+autoPlay()
